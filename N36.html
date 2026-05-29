@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1 - Thông Tin Bưu Điện</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .left, .right {
+            width: 48%;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: red;
+        }
+
+        h3 {
+            background: #ccc;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .btn {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .result p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="left">
+
+            <form id="F1">
+
+                <h3>THÔNG TIN NGƯỜI GỬI</h3>
+
+                <table border="1">
+                    <tr>
+                        <td>Người gửi</td>
+                        <td>
+                            <input type="text" id="nguoiGui">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>E-mail</td>
+                        <td>
+                            <input type="email" id="emailGui">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Điện thoại</td>
+                        <td>
+                            <input type="text" id="sdtGui">
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>THÔNG TIN NGƯỜI NHẬN</h3>
+
+                <table border="1">
+
+                    <tr>
+                        <td>Người nhận</td>
+                        <td>
+                            <input type="text" id="nguoiNhan">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Điện thoại</td>
+                        <td>
+                            <input type="text" id="sdtNhan">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Địa chỉ</td>
+                        <td>
+                            <input type="text" id="diaChi">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Tỉnh/TP</td>
+                        <td>
+                            <select id="tinhTP">
+                                <option>TP.HCM Nội Thành</option>
+                                <option>Hà Nội</option>
+                                <option>Huế</option>
+                                <option>Đà Nẵng</option>
+                                <option>Quảng Ninh</option>
+                                <option>Cần Thơ</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Quận</td>
+                        <td>
+                            <select id="quan">
+                                <option>Quận 1</option>
+                                <option>Quận 2</option>
+                                <option>Quận 3</option>
+                                <option>Quận Tân Phú</option>
+                                <option>Quận Tân Bình</option>
+                                <option>Quận Thủ Đức</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="btn">
+                    <button type="button" onclick="XuatThongTin()">
+                        GỬI THÔNG TIN
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="right">
+
+            <h2>THÔNG TIN BẠN VỪA NHẬP</h2>
+
+            <div class="result">
+
+                <h3>THÔNG TIN NGƯỜI GỬI</h3>
+
+                <p><b>Người gửi:</b> <span id="kqNguoiGui"></span></p>
+                <p><b>E-mail:</b> <span id="kqEmailGui"></span></p>
+                <p><b>Điện thoại:</b> <span id="kqSdtGui"></span></p>
+
+                <h3>THÔNG TIN NGƯỜI NHẬN</h3>
+
+                <p><b>Người nhận:</b> <span id="kqNguoiNhan"></span></p>
+                <p><b>Điện thoại:</b> <span id="kqSdtNhan"></span></p>
+                <p><b>Địa chỉ:</b> <span id="kqDiaChi"></span></p>
+                <p><b>Tỉnh/TP:</b> <span id="kqTinh"></span></p>
+                <p><b>Quận:</b> <span id="kqQuan"></span></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function XuatThongTin() {
+
+            document.getElementById("kqNguoiGui").innerText =
+                document.getElementById("nguoiGui").value;
+
+            document.getElementById("kqEmailGui").innerText =
+                document.getElementById("emailGui").value;
+
+            document.getElementById("kqSdtGui").innerText =
+                document.getElementById("sdtGui").value;
+
+            document.getElementById("kqNguoiNhan").innerText =
+                document.getElementById("nguoiNhan").value;
+
+            document.getElementById("kqSdtNhan").innerText =
+                document.getElementById("sdtNhan").value;
+
+            document.getElementById("kqDiaChi").innerText =
+                document.getElementById("diaChi").value;
+
+            document.getElementById("kqTinh").innerText =
+                document.getElementById("tinhTP").value;
+
+            document.getElementById("kqQuan").innerText =
+                document.getElementById("quan").value;
+        }
+    </script>
+
+</body>
+</html>
