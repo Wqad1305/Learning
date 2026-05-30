@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ hàng điện thoại</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #f2f2f2;
+            font-family: Arial;
+        }
+
+        .navbar {
+            background: black;
+            padding: 25px;
+        }
+
+        .navbar-brand {
+            color: yellow;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container {
+            width: 1200px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .title {
+            color: #e60012;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cart-item {
+            display: flex;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 220px;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            text-align: center;
+        }
+
+            .product-image img {
+                width: 150px;
+            }
+
+        .remove {
+            margin-top: 10px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+
+        .colors {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .color-box {
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+            .color-box:hover {
+                border: 1px solid red;
+            }
+
+        .selected {
+            border: 2px solid red;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 28px;
+            color: red;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .form-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .delivery {
+            margin-top: 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .delivery-box {
+            flex: 1;
+            border: 2px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+            .delivery-box input {
+                margin-bottom: 10px;
+            }
+            .delivery-box:hover {
+                border-color: red;
+            }
+            .delivery-box:has(input:checked) {
+                border-color: red;
+                background: #fff5f5;
+            }
+
+        .submit-btn {
+            width: 300px;
+            height: 55px;
+            border: none;
+            background: orange;
+            color: white;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: white;
+            padding: 40px;
+        }
+
+        .footer-container {
+            width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        @media(max-width:1250px) {
+
+            .container,
+            .topbar-container,
+            .footer-container {
+                width: 95%;
+            }
+
+            .cart-item {
+                flex-direction: column;
+            }
+
+            .product-image {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .delivery {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <div class="container-fluid">
+
+                <span class="navbar-brand">SHOP MOBILE</span>
+
+                <div>
+                    <a href="Trang chủ.html">Trang chủ</a>
+                    <a href="#">Giỏ hàng</a>
+                    <a href="#">Liên hệ</a>
+                </div>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="title">THÔNG TIN ĐẶT HÀNG</div>
+        <!-- PRODUCT -->
+        <div class="cart-item">
+
+            <div class="product-image">
+                <img src="Images/iphone16.jpg" />
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+
+                    iPhone 16 Pro Max
+
+                    <span class="price">
+                        - 33.990.000đ
+                    </span>
+
+                </div>
+
+                <br>
+
+                <div class="description">
+                    <p>
+                        iPhone 16 Pro Max sở hữu thiết kế sang trọng,
+                        màn hình lớn sắc nét cùng hiệu năng cực mạnh.
+                        Camera cải tiến giúp chụp ảnh và quay video chuyên nghiệp.
+                        Pin dung lượng cao cho thời gian sử dụng lâu dài.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="total">
+            Tổng tiền: 33.990.000đ
+        </div>
+
+        <!-- FORM -->
+        <div class="form-title">
+            Thông tin đặt hàng
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="Họ và tên">
+        </div>
+
+        <div class="row">
+
+            <div class="form-group">
+                <input type="text" placeholder="Số điện thoại">
+            </div>
+
+            <div class="form-group">
+                <input type="email" placeholder="Email">
+            </div>
+
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="delivery">
+
+            <label class="delivery-box">
+
+                <input type="radio" name="delivery" checked>
+
+                🚚<br><br>
+
+                Nhận tại nhà
+
+            </label>
+
+            <label class="delivery-box">
+
+                <input type="radio" name="delivery">
+
+                🏪<br><br>
+
+                Nhận tại cửa hàng
+
+            </label>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="form-group">
+                <select>
+                    <option>Chọn Tỉnh Thành</option>
+
+                    <option>TP.HCM</option>
+                    <option>Hà Nội</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select>
+
+                    <option>Chọn Phường / Xã</option>
+
+                    <!-- TP.HCM -->
+                    <option>Phường Bến Nghé - Quận 1 - TP.HCM</option>
+                    <option>Phường Bến Thành - Quận 1 - TP.HCM</option>
+                    <option>Phường 13 - Quận 10 - TP.HCM</option>
+                    <option>Phường 5 - Gò Vấp - TP.HCM</option>
+                    <option>Phường Hiệp Bình Chánh - Thủ Đức - TP.HCM</option>
+                    <option>Xã Bình Hưng - Bình Chánh - TP.HCM</option>
+
+                    <!-- Hà Nội -->
+                    <option>Phường Cát Linh - Đống Đa - Hà Nội</option>
+                    <option>Phường Láng Hạ - Đống Đa - Hà Nội</option>
+                    <option>Phường Dịch Vụng Hậu - Cầu Giấy - Hà Nội</option>
+                    <option>Phường Mỹ Đình 1 - Nam Từ Liêm - Hà Nội</option>
+                    <option>Phường Hoàng Liệt - Hoàng Mai - Hà Nội</option>
+                    <option>Xã Đông Hội - Đông Anh - Hà Nội</option>
+
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <input type="text" placeholder="Địa chỉ">
+        </div>
+
+        <div class="form-group">
+            <input rows="5" placeholder="Lưu ý của khách hàng">
+        </div>
+        <a href="DatHangThanhCong.html">
+            <button class="submit-btn">
+                HOÀN TẤT ĐẶT HÀNG
+            </button>
+        </a>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <h3>SHOP MOBILE</h3>
+                <p>140 Lê Trọng Tấn, Phường Tây Thạnh, Thành phố Hồ Chí M   inh</p>
+                <p>Hotline: 0283 8163 318</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>CHÍNH SÁCH</h3>
+                <p>Hướng dẫn thanh toán</p>
+                <p>Hướng dẫn đặt hàng</p>
+                <p>Quy định bảo hành</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>VỀ CHÚNG TÔI</h3>
+                <p>Giới thiệu</p>
+                <p>Tuyển dụng</p>
+                <p>Bảo mật thông tin</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
