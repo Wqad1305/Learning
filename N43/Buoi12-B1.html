@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 30px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .box {
+            width: 420px;
+            border: 1px solid #ccc;
+            background: white;
+            padding: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: red;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #d9d9d9;
+            text-align: left;
+            padding: 10px;
+        }
+
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #ketqua p {
+            margin: 10px 0;
+        }
+
+        .title-box {
+            background: #d9d9d9;
+            padding: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box">
+            <form id="F1">
+
+                <table>
+                    <tr>
+                        <th colspan="2">THÔNG TIN NGƯỜI GỬI</th>
+                    </tr>
+
+                    <tr>
+                        <td>Người gửi</td>
+                        <td>
+                            <input type="text" id="nguoiGui">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>E-Mail</td>
+                        <td>
+                            <input type="email" id="emailGui">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Điện thoại</td>
+                        <td>
+                            <input type="text" id="sdtGui">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">THÔNG TIN NGƯỜI NHẬN</th>
+                    </tr>
+
+                    <tr>
+                        <td>Người nhận</td>
+                        <td>
+                            <input type="text" id="nguoiNhan">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Điện thoại</td>
+                        <td>
+                            <input type="text" id="sdtNhan">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Địa chỉ</td>
+                        <td>
+                            <input type="text" id="diaChi">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Tỉnh/TP</td>
+                        <td>
+                            <select id="tinhTP">
+                                <option>TP.HCM Nội Thành</option>
+                                <option>Hà Nội</option>
+                                <option>Huế</option>
+                                <option>Đà Nẵng</option>
+                                <option>Quảng Ninh</option>
+                                <option>Cần Thơ</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Quận</td>
+                        <td>
+                            <select id="quan">
+                                <option>Quận 1</option>
+                                <option>Quận 2</option>
+                                <option>Quận 3</option>
+                                <option>Quận Tân Phú</option>
+                                <option>Quận Tân Bình</option>
+                                <option>Quận Thủ Đức</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <input type="button" class="btn" value="GỬI THÔNG TIN" onclick="XuatThongTin()">
+
+            </form>
+        </div>
+
+        <div class="box">
+            <h2>THÔNG TIN BẠN VỪA NHẬP</h2>
+
+            <div id="ketqua"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function XuatThongTin() {
+
+            let nguoiGui = document.getElementById("nguoiGui").value;
+            let emailGui = document.getElementById("emailGui").value;
+            let sdtGui = document.getElementById("sdtGui").value;
+
+            let nguoiNhan = document.getElementById("nguoiNhan").value;
+            let sdtNhan = document.getElementById("sdtNhan").value;
+            let diaChi = document.getElementById("diaChi").value;
+            let tinhTP = document.getElementById("tinhTP").value;
+            let quan = document.getElementById("quan").value;
+
+            document.getElementById("ketqua").innerHTML = `
+
+                    <div class="title-box">
+                        THÔNG TIN NGƯỜI GỬI
+                    </div>
+
+                    <p><b>Người gửi:</b> <span class="red">${nguoiGui}</span></p>
+                    <p><b>E-Mail:</b> <span class="red">${emailGui}</span></p>
+                    <p><b>Điện thoại:</b> <span class="red">${sdtGui}</span></p>
+
+                    <div class="title-box">
+                        THÔNG TIN NGƯỜI NHẬN
+                    </div>
+
+                    <p><b>Người nhận:</b> <span class="red">${nguoiNhan}</span></p>
+                    <p><b>Điện thoại:</b> <span class="red">${sdtNhan}</span></p>
+                    <p><b>Địa chỉ:</b> <span class="red">${diaChi}</span></p>
+                    <p><b>Tỉnh/TP:</b> <span class="red">${tinhTP}</span></p>
+                    <p><b>Quận:</b> <span class="red">${quan}</span></p>
+                `;
+        }
+    </script>
+
+</body>
+</html>

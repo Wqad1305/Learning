@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        .container {
+            width: 700px;
+            margin: 40px auto;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+        }
+
+        .title {
+            background: #d9d9d9;
+            padding: 10px;
+            font-weight: bold;
+            width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        ul {
+            width: 300px;
+            margin: auto;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>THÔNG TIN BẠN VỪA NHẬP</h1>
+
+        <div class="title">
+            THÔNG TIN NGƯỜI GỬI
+        </div>
+
+        <ul>
+            <li>
+                Người gửi:
+                <span class="red" id="showNguoiGui"></span>
+            </li>
+
+            <li>
+                E-Mail:
+                <span class="red" id="showEmailGui"></span>
+            </li>
+
+            <li>
+                Điện thoại:
+                <span class="red" id="showSdtGui"></span>
+            </li>
+        </ul>
+
+        <br>
+
+        <div class="title">
+            THÔNG TIN NGƯỜI NHẬN
+        </div>
+
+        <ul>
+            <li>
+                Người nhận:
+                <span class="red" id="showNguoiNhan"></span>
+            </li>
+
+            <li>
+                Điện thoại:
+                <span class="red" id="showSdtNhan"></span>
+            </li>
+
+            <li>
+                Địa chỉ:
+                <span class="red" id="showDiaChi"></span>
+            </li>
+
+            <li>
+                Tỉnh/TP:
+                <span class="red" id="showTinhTP"></span>
+            </li>
+
+            <li>
+                Quận:
+                <span class="red" id="showQuan"></span>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        document.getElementById("showNguoiGui").innerText =
+            sessionStorage.getItem("nguoiGui");
+
+        document.getElementById("showEmailGui").innerText =
+            sessionStorage.getItem("emailGui");
+
+        document.getElementById("showSdtGui").innerText =
+            sessionStorage.getItem("sdtGui");
+
+        document.getElementById("showNguoiNhan").innerText =
+            sessionStorage.getItem("nguoiNhan");
+
+        document.getElementById("showSdtNhan").innerText =
+            sessionStorage.getItem("sdtNhan");
+
+        document.getElementById("showDiaChi").innerText =
+            sessionStorage.getItem("diaChi");
+
+        document.getElementById("showTinhTP").innerText =
+            sessionStorage.getItem("tinhTP");
+
+        document.getElementById("showQuan").innerText =
+            sessionStorage.getItem("quan");
+
+        sessionStorage.clear();
+    </script>
+
+</body>
+</html>

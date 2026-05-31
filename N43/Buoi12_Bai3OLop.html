@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh Giá Sản Phẩm</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ececec;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            width: 420px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border: 1px solid #ddd;
+        }
+
+        .product-name {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+        }
+
+        .price {
+            color: orange;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .rating {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .review {
+            border-top: 2px solid #7fd67f;
+            padding: 15px 0;
+        }
+
+        .score {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="product"></div>
+
+        <h2>Thêm đánh giá</h2>
+
+        <input type="text" id="ten" placeholder="Tên người đánh giá">
+        <input type="number" id="tuoi" placeholder="Tuổi">
+        <textarea id="noidung" placeholder="Nội dung đánh giá"></textarea>
+        <input type="number" id="diem" placeholder="Điểm số (1 - 5)" min="1" max="5">
+
+        <button onclick="themDanhGia()">Thêm đánh giá</button>
+
+    </div>
+
+    <script>
+        class Review {
+            constructor(ten, tuoi, noiDung, diem) {
+                this.ten = ten;
+                this.tuoi = tuoi;
+                this.noiDung = noiDung;
+                this.diem = diem;
+            }
+        }
+
+        class Product {
+            constructor(tenSP, gia, hinh, reviews) {
+                this.tenSP = tenSP;
+                this.gia = gia;
+                this.hinh = hinh;
+                this.reviews = reviews;
+            }
+
+            tinhDiemTB() {
+                let tong = 0;
+
+                for (let i = 0; i < this.reviews.length; i++) {
+                    tong += this.reviews[i].diem;
+                }
+
+                return (tong / this.reviews.length).toFixed(2);
+            }
+
+            hienThi() {
+                let html = `
+                    <div class="product">
+                        <img src="${this.hinh}" alt="Laptop">
+
+                        <div class="product-name">
+                            ${this.tenSP}
+                        </div>
+
+                        <div class="price">
+                            Giá: ${this.gia.toLocaleString()} VNĐ
+                        </div>
+
+                        <div class="rating">
+                            Đánh giá sản phẩm:
+                            ${this.tinhDiemTB()}
+                            (${this.reviews.length} đánh giá)
+                        </div>
+                `;
+
+                for (let i = 0; i < this.reviews.length; i++) {
+                    html += `
+                        <div class="review">
+                            <b>Người đánh giá:</b>
+                            ${this.reviews[i].ten}
+                            -
+                            ${this.reviews[i].tuoi} tuổi
+                            <br><br>
+
+                            ${this.reviews[i].noiDung}
+
+                            <div class="score">
+                                Điểm: ${this.reviews[i].diem}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+
+                document.getElementById("product").innerHTML = html;
+            }
+        }
+
+        let danhGia1 = new Review(
+            "Alice",
+            25,
+            "Excellent work!",
+            4
+        );
+
+        let danhGia2 = new Review(
+            "John",
+            35,
+            "Good price!",
+            5
+        );
+
+        let sanPham = new Product(
+            "Laptop Dell Inspire 2819",
+            13500000,
+            "https://cdn.tgdd.vn/Products/Images/44/325117/TimerThumb/acer-aspire-lite-al15-41p-r3cy-r7-nxj5ssv001-(2).jpg",
+            [danhGia1, danhGia2]
+        );
+
+        sanPham.hienThi();
+
+        function themDanhGia() {
+
+            let ten = document.getElementById("ten").value;
+            let tuoi = document.getElementById("tuoi").value;
+            let noiDung = document.getElementById("noidung").value;
+            let diem = parseFloat(document.getElementById("diem").value);
+
+            let reviewMoi = new Review(
+                ten,
+                tuoi,
+                noiDung,
+                diem
+            );
+
+            sanPham.reviews.push(reviewMoi);
+
+            sanPham.hienThi();
+
+            document.getElementById("ten").value = "";
+            document.getElementById("tuoi").value = "";
+            document.getElementById("noidung").value = "";
+            document.getElementById("diem").value = "";
+        }
+    </script>
+
+</body>
+</html>

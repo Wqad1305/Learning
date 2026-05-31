@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Biểu mẫu gửi hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+    function XuatThongTin() {
+      let form = document.forms["F1"];
+      let errors = [];
+
+      if (form.senderName.value.trim() === "") errors.push("Họ tên người gửi chưa nhập");
+      if (!form.senderEmail.value.match(/^[^@]+@[^@]+\.[^@]+$/)) errors.push("Email người gửi chưa đúng định dạng");
+      if (!form.senderPhone.value.match(/^[0-9]{9,11}$/)) errors.push("Điện thoại người gửi chưa hợp lệ");
+      if (form.receiverName.value.trim() === "") errors.push("Họ tên người nhận chưa nhập");
+      if (!form.receiverPhone.value.match(/^[0-9]{9,11}$/)) errors.push("Điện thoại người nhận chưa hợp lệ");
+      if (!form.agree.checked) errors.push("Bạn cần đồng ý điều khoản dịch vụ");
+
+      let output = document.getElementById("output");
+      output.innerHTML = "";
+
+      if (errors.length > 0) {
+        errors.forEach(e => {
+          let p = document.createElement("p");
+          p.className = "error";
+          p.textContent = e;
+          output.appendChild(p);
+        });
+      } else {
+        output.innerHTML =
+          "<h3>THÔNG TIN BẠN VỪA NHẬP</h3>" +
+          "<p><b>Người gửi:</b> " + form.senderName.value + "</p>" +
+          "<p><b>Email:</b> " + form.senderEmail.value + "</p>" +
+          "<p><b>Điện thoại:</b> " + form.senderPhone.value + "</p>" +
+          "<p><b>Người nhận:</b> " + form.receiverName.value + "</p>" +
+          "<p><b>Điện thoại:</b> " + form.receiverPhone.value + "</p>" +
+          "<p><b>Địa chỉ:</b> " + form.address.value + ", " + form.district.value + ", " + form.city.value + "</p>" +
+          "<p><b>Gói dịch vụ:</b> " + form.service.value + "</p>" +
+          "<p><b>Tuỳ chọn thêm:</b> " + Array.from(form.options).filter(o=>o.checked).map(o=>o.value).join(", ") + "</p>" +
+          "<p><b>Thanh toán:</b> " + form.payment.value + "</p>" +
+          "<p><b>Ghi chú:</b> " + form.note.value + "</p>";
+      }
+    }
+    </script>
+</head>
+<body>
+    <form name="F1">
+        <h3>THÔNG TIN NGƯỜI GỬI</h3>
+        <label>Họ tên * <input type="text" name="senderName"></label>
+        <label>Email * <input type="text" name="senderEmail"></label>
+        <label>Điện thoại * <input type="text" name="senderPhone"></label>
+
+        <h3>THÔNG TIN NGƯỜI NHẬN</h3>
+        <label>Họ tên người nhận * <input type="text" name="receiverName"></label>
+        <label>Điện thoại * <input type="text" name="receiverPhone"></label>
+        <label>Số nhà & Đường <input type="text" name="address"></label>
+        <label>Tỉnh/TP * <input type="text" name="city"></label>
+        <label>Quận/Huyện * <input type="text" name="district"></label>
+
+        <h3>GÓI DỊCH VỤ</h3>
+        <label><input type="radio" name="service" value="Tiêu chuẩn" checked> Tiêu chuẩn</label>
+        <label><input type="radio" name="service" value="Hoả tốc"> Hoả tốc</label>
+        <label><input type="radio" name="service" value="Tiết kiệm"> Tiết kiệm</label>
+
+        <h3>Tùy chọn thêm</h3>
+        <label><input type="checkbox" name="options" value="Hàng dễ vỡ"> Hàng dễ vỡ</label>
+        <label><input type="checkbox" name="options" value="Thu hộ (COD)"> Thu hộ (COD)</label>
+        <label><input type="checkbox" name="options" value="Bảo hiểm"> Bảo hiểm</label>
+        <label><input type="checkbox" name="options" value="Giao cuối tuần"> Giao cuối tuần</label>
+
+        <h3>Thanh toán</h3>
+        <label><input type="radio" name="payment" value="Người gửi trả" checked> Người gửi trả</label>
+        <label><input type="radio" name="payment" value="Người nhận trả"> Người nhận trả</label>
+
+        <h3>Ghi chú</h3>
+        <textarea name="note"></textarea>
+
+        <label><input type="checkbox" name="agree"> Tôi đồng ý với điều khoản dịch vụ *</label>
+
+        <br><br>
+        <button type="reset">Làm lại</button>
+        <button type="button" onclick="XuatThongTin()">Gửi thông tin</button>
+    </form>
+
+    <div id="output"></div>
+</body>
+</html>
