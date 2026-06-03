@@ -1,0 +1,170 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .modal-box {
+            background: white;
+            width: 650px;
+            max-width: 95%;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .modal-header {
+            background: #008276;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .modal-body {
+            padding: 40px;
+            color: #333;
+        }
+
+        .success-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .success-img {
+            width: 100px;
+            height: 80px;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .phone-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+            .phone-line span {
+                color: #d0021b;
+                font-weight: bold;
+                font-size: 22px;
+            }
+
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-home,
+        .btn-order {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-home {
+            background: #444;
+        }
+
+            .btn-home:hover {
+                background: #222;
+            }
+
+        .btn-order {
+            background: orange;
+        }
+
+            .btn-order:hover {
+                background: darkorange;
+            }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+            ĐẶT HÀNG - NGHE TƯ VẤN MIỄN PHÍ
+        </div>
+
+        <div class="modal-body">
+
+            <img src="Images/dahangthanhcong.jpg"
+                 class="success-img">
+
+            <div class="success-title">
+                ĐẶT HÀNG THÀNH CÔNG !
+            </div>
+
+            <p>
+                Chúng tôi sẽ liên hệ với bạn trong vòng
+                <b>15 phút</b> và cam kết giao hàng miễn phí
+                trong <b>24h</b>.
+            </p>
+
+            <p class="phone-line">
+                Tư vấn bán hàng
+                <span>0283 8163 318</span>
+                (08:00 - 22:00 h)
+            </p>
+
+            <!-- NÚT -->
+            <div class="button-group">
+
+                <a href="Trang chủ.html"
+                   class="btn-home">
+                    VỀ TRANG CHỦ
+                </a>
+
+                <a href="Trang chủ.html"
+                   class="btn-order">
+                    HOÀN TẤT ĐẶT HÀNG
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+

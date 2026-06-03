@@ -1,0 +1,21 @@
+1.Tạo cơ sở dữ liệu và các bảng bằng lệnh CREATE DATABASE và CREATE TABLE.
+
+2. Liên kết các bảng với nhau bằng PRIMARY KEY và FOREIGN KEY để đảm bảo tính toàn vẹn dữ liệu.
+
+3. Thêm dữ liệu vào bảng bằng lệnh INSERT INTO.
+
+4. Truy vấn và lấy dữ liệu từ cơ sở dữ liệu bằng lệnh SELECT.
+
+5. Kết hợp dữ liệu từ nhiều bảng bằng câu lệnh JOIN.
+
+6. Thống kê dữ liệu bằng các hàm như COUNT, kết hợp với GROUP BY và HAVING.
+
+7. Sử dụng Trigger để tự động kiểm tra hoặc cập nhật dữ liệu khi có thao tác thêm, sửa hoặc xóa.
+
+8. Kiểm tra sự tồn tại của dữ liệu bằng câu lệnh IF EXISTS.
+
+9. Thông báo lỗi và hủy giao dịch không hợp lệ bằng RAISERROR và ROLLBACK TRANSACTION.
+
+10. Tạo và sử dụng Stored Procedure bằng CREATE PROC và EXEC để thực hiện các chức năng xử lý dữ liệu.
+
+11. Sử dụng CASE WHEN để xử lý các điều kiện và phân loại dữ liệu trong SQL.

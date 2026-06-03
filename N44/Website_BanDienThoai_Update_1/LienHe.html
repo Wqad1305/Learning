@@ -1,0 +1,219 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Liên hệ - SHOP MOBILE</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: black;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: yellow;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 18px;
+        }
+
+            .menu a:hover {
+                color: yellow;
+            }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 40px;
+            color: #222;
+        }
+
+        .contact-box {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        /* LEFT */
+        .contact-info {
+            flex: 1;
+            background: #111;
+            color: white;
+            padding: 40px;
+        }
+
+            .contact-info h2 {
+                color: yellow;
+                margin-bottom: 25px;
+                font-size: 35px;
+            }
+
+            .contact-info p {
+                font-size: 22px;
+                line-height: 1.8;
+            }
+
+        /* RIGHT */
+        .contact-form {
+            flex: 1.5;
+            padding: 40px;
+        }
+
+            .contact-form h2 {
+                font-size: 35px;
+                margin-bottom: 30px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                padding: 18px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                font-size: 18px;
+                box-sizing: border-box;
+            }
+
+            .contact-form textarea {
+                resize: none;
+                height: 160px;
+            }
+
+        .btn-send {
+            background: red;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 10px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+            .btn-send:hover {
+                background: darkred;
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <div class="navbar">
+
+        <div class="logo">
+            SHOP MOBILE
+        </div>
+
+        <div class="menu">
+            <a href="Trang chủ.html">Trang chủ</a>
+            <a href="giohang.html">Giỏ hàng</a>
+            <a href="LienHe.html">Liên hệ</a>
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <h1 class="title">
+            LIÊN HỆ VỚI CHÚNG TÔI
+        </h1>
+
+        <div class="contact-box">
+
+            <!-- THÔNG TIN -->
+            <div class="contact-info">
+
+                <h2>Thông tin liên hệ</h2>
+
+                <p>
+                    📍 Địa chỉ:
+                    140 Lê Trọng Tấn, Phường Tây Thạnh, Thành phố Hồ Chí Minh
+                </p>
+
+                <p>
+                    📞 Hotline:
+                    0283 8163 318
+                </p>
+
+                <p>
+                    📧 Email:
+                    shopmobile@gmail.com
+                </p>
+
+                <p>
+                    🕒 Giờ mở cửa:
+                    08:00 - 22:00
+                </p>
+
+            </div>
+
+            <!-- FORM -->
+            <div class="contact-form">
+
+                <h2>Gửi tin nhắn</h2>
+
+                <input type="text"
+                       placeholder="Nhập họ tên">
+
+                <input type="email"
+                       placeholder="Nhập email">
+
+                <input type="text"
+                       placeholder="Nhập số điện thoại">
+
+                <textarea placeholder="Nhập nội dung liên hệ">
+                </textarea>
+
+                <button class="btn-send" onclick="guiLienHe()">
+                    Gửi liên hệ
+                </button>
+
+                <script>
+    function guiLienHe() {
+        alert("Gửi liên hệ thành công!");
+
+        window.location.href =
+            "Trang chủ.html";
+    }
+                </script>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
