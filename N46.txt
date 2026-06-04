@@ -1,0 +1,137 @@
+| Loại      | Mục đích                         | Từ khóa                           |
+| --------- | -------------------------------- | --------------------------------- |
+| Trigger   | Tự động khi INSERT/UPDATE/DELETE | `CREATE TRIGGER ... ON ... AFTER` |
+| Procedure | Thực hiện một công việc          | `CREATE PROC ... EXEC`            |
+| Function  | Tính toán và trả kết quả         | `CREATE FUNCTION ... RETURNS`     |
+| View      | Tạo bảng ảo để xem dữ liệu       | `CREATE VIEW ... AS SELECT`       |
+
+---------------------------------------------------------------------------------------------------------------
+Trigger = Tự chạy.
+Procedure = Phải gọi (EXEC).
+Function = Trả về giá trị.
+View = Chỉ để xem dữ liệu.
+
+1. Trigger
+
+Tự động chạy khi có INSERT.
+
+CREATE TRIGGER TG_CAPNHAT_SISO
+ON SINHVIEN
+AFTER INSERT
+AS
+BEGIN
+    UPDATE LOP
+    SET SISO = SISO + 1
+    WHERE MALOP =
+    (
+        SELECT MALOP
+        FROM inserted
+    )
+END
+
+Hiểu:
+
+Thêm sinh viên ⇒ Trigger tự chạy.
+Không cần gọi.
+2. Procedure (Stored Procedure)
+
+Gộp thêm sinh viên và tăng sĩ số vào cùng một thủ tục.
+
+CREATE PROC SP_THEMSV
+(
+    @MASV CHAR(10),
+    @HOTEN NVARCHAR(50),
+    @MALOP CHAR(10)
+)
+AS
+BEGIN
+
+    INSERT INTO SINHVIEN
+    VALUES
+    (
+        @MASV,
+        @HOTEN,
+        @MALOP
+    )
+
+    UPDATE LOP
+    SET SISO = SISO + 1
+    WHERE MALOP = @MALOP
+
+END
+
+Gọi:
+
+EXEC SP_THEMSV
+'SV01',
+N'Nguyễn Văn A',
+'CNTT01'
+
+Hiểu:
+
+Phải gọi EXEC.
+Không tự động.
+3. Function
+
+Function không nên cập nhật dữ liệu.
+
+Nó chỉ tính toán và trả kết quả.
+
+Ví dụ tính sĩ số lớp:
+
+CREATE FUNCTION FN_SISO
+(
+    @MALOP CHAR(10)
+)
+RETURNS INT
+AS
+BEGIN
+
+    DECLARE @SL INT
+
+    SELECT @SL = COUNT(*)
+    FROM SINHVIEN
+    WHERE MALOP = @MALOP
+
+    RETURN @SL
+
+END
+
+Gọi:
+
+SELECT dbo.FN_SISO('CNTT01')
+
+Kết quả:
+
+31
+
+Hiểu:
+
+Function dùng để tính toán.
+Không dùng để INSERT hoặc UPDATE.
+4. View
+
+Tạo bảng ảo xem sĩ số.
+
+CREATE VIEW VW_SISO
+AS
+SELECT
+    L.MALOP,
+    L.TENLOP,
+    COUNT(S.MASV) AS SISO
+FROM LOP L
+LEFT JOIN SINHVIEN S
+ON L.MALOP = S.MALOP
+GROUP BY
+    L.MALOP,
+    L.TENLOP
+
+Xem:
+
+SELECT *
+FROM VW_SISO
+
+Hiểu:
+
+View chỉ để xem dữ liệu.
+Không tự động xử lý.
