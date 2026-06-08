@@ -1,0 +1,174 @@
+CREATE DATABASE QLSV
+GO
+Drop database QLSV
+USE QLSV
+GO
+
+CREATE TABLE Lop
+(
+    MaLop CHAR(5) PRIMARY KEY,
+    TenLop NVARCHAR(50) NOT NULL,
+    SiSo INT DEFAULT 0
+)
+
+CREATE TABLE SinhVien
+(
+    MaSV CHAR(5) PRIMARY KEY,
+    HoTen NVARCHAR(50) NOT NULL,
+    Diem FLOAT,
+    MaLop CHAR(5),
+
+    FOREIGN KEY (MaLop)
+    REFERENCES Lop(MaLop)
+)
+
+INSERT INTO Lop
+VALUES
+('L01',N'Công nghệ thông tin',0),
+('L02',N'Kế toán',0)
+
+INSERT INTO SinhVien
+VALUES
+('SV01',N'Nguyễn Văn A',8,'L01'),
+('SV02',N'Trần Văn B',4,'L01'),
+('SV03',N'Lê Thị C',9,'L02'),
+('SV04',N'Phạm Văn D',3,'L02')
+
+CREATE VIEW vSinhVien
+AS
+SELECT *
+FROM SinhVien
+GO
+
+CREATE PROC sp_DanhSachSV
+AS
+BEGIN
+    SELECT *
+    FROM SinhVien
+END
+GO
+
+CREATE PROC sp_SVDuoi5
+AS
+BEGIN
+    SELECT *
+    FROM SinhVien
+    WHERE Diem < 5
+END
+GO
+
+CREATE PROC sp_ThemSV
+    @MaSV CHAR(5),
+    @HoTen NVARCHAR(50),
+    @Diem FLOAT,
+    @MaLop CHAR(5)
+AS
+BEGIN
+    INSERT INTO SinhVien
+    VALUES(@MaSV,@HoTen,@Diem,@MaLop)
+END
+GO
+
+CREATE FUNCTION fn_DemSV()
+RETURNS INT
+AS
+BEGIN
+    DECLARE @SL INT
+
+    SELECT @SL = COUNT(*)
+    FROM SinhVien
+
+    RETURN @SL
+END
+GO
+
+CREATE FUNCTION fn_SVDuoi5()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT *
+    FROM SinhVien
+    WHERE Diem < 5
+)
+GO
+
+CREATE TRIGGER trg_TangSiSo
+ON SinhVien
+AFTER INSERT
+AS
+BEGIN
+    UPDATE Lop
+    SET SiSo = SiSo + 1
+    WHERE MaLop IN
+    (
+        SELECT MaLop
+        FROM inserted
+    )
+END
+GO
+
+DECLARE @TenSV NVARCHAR(50)
+
+DECLARE curSV CURSOR
+FOR
+SELECT HoTen
+FROM SinhVien
+
+OPEN curSV
+
+FETCH NEXT FROM curSV INTO @TenSV
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    PRINT @TenSV
+    FETCH NEXT FROM curSV INTO @TenSV
+END
+
+CLOSE curSV
+DEALLOCATE curSV
+GO
+
+SELECT *
+FROM SinhVien
+
+SELECT *
+FROM SinhVien
+WHERE Diem < 5
+
+SELECT *
+FROM SinhVien
+ORDER BY Diem DESC
+
+SELECT MaLop,
+       COUNT(*) AS SoLuong
+FROM SinhVien
+GROUP BY MaLop
+
+SELECT sv.MaSV,
+       sv.HoTen,
+       l.TenLop
+FROM SinhVien sv
+INNER JOIN Lop l
+ON sv.MaLop = l.MaLop
+
+SELECT *
+FROM vSinhVien
+
+EXEC sp_DanhSachSV
+
+EXEC sp_SVDuoi5
+
+SELECT dbo.fn_DemSV()
+
+SELECT *
+FROM dbo.fn_SVDuoi5()
+GO
+
+BACKUP DATABASE QLSV
+TO DISK='D:\QLSV.bak'
+GO
+
+RESTORE DATABASE QLSV
+FROM DISK='D:\QLSV.bak'
+GO
