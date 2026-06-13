@@ -1,0 +1,10 @@
+1. Database
+2. Table (PK, FK)
+3. INSERT, SELECT
+4. Procedure
+5. Function
+6. Cursor
+7. Backup & Restore
+8. Login - User - Role
+9. Grant quyền
+10. Lịch giao tác & Đồ thị P(S)
