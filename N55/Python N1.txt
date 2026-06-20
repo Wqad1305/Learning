@@ -1,0 +1,13 @@
+1. chủ đề học là cấu trúc dữ liệu (data structures) và thuật toán (algorithms)
+2.Code editor là tạo trang viết code như nào và chạy như nào input output...
+3.Big O là gì
+-độ phức tạp nhanh chậm của từng thuật toán thuật toán nào có thời gian chạy nhanh hơn thì tối ưu hơn tối ưu hơn thì nó giảm tiêu hao tài nguyên ...
+-cho vòng lập for O(n) là giới hạn mà dữ liệu tìm kiếm 
+vd for i ỉn range(n) 
+	print_items(10)
+n ở đây là 10
+O(n)^2 là lồng 2 vòng lặp lại với nhau nên dữ liệu bình phương lên
+vd for i in range (n)
+	for j ỉn range(n)
+		print(i,j)
+thì ở đây 2 vòng lặp for lồng vào nhau nên binh phương dữ liệu xuất ra 
