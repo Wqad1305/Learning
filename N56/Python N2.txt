@@ -1,0 +1,10 @@
+1.Khi số phần tử tăng lên, Big O cho biết tốc độ tăng của công việc mà thuật toán phải làm
+2. Log n là chia đôi dữ liệu đến khi tìm đc mục tiêu 
+3. classes tạo từng class là 1 thiết kế chung
+trong class tạo các đối tượng thuộc tính...
+tạo init (hàm khởi tạo) và self đại diện cho đối tượng 
+
+4. pointer 
+nếu đặt a=11 b=a thì sẽ trỏ tới b=11 và id same 
+nếu a=11 mà b=22 b=a thì a giữ nguyên và b thay đổi b=22 id different
+=>vì với dạng sô thì là int(immutable)ko thể thay đổi nhưng với list, dictionary là mutable có thể đổi đc nên nếu a=[1,2,3] mà b.append(4) thì b=[1,2,3,4] và a cũng thành [1,2,3,4]
