@@ -1,0 +1,86 @@
+1.List nếu thêm hay xóa dữ liệu thì di chuyển các dữ liệu cũ còn Linked List thì khi thêm hoặc xóa thì gán thẳng cho cái cần nếu muốn thêm đầu thì gán head cuối thì tail(đổi liên kết các node)
+2.Code
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+ 
+
+class LinkedList:
+    def __init__(self, value):
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
+
+    def print_list(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+ 
+    def append(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+        return True
+
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        pre = self.head
+        while(temp.next):
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp
+def pop_first(self):
+        if self.length==0:
+            return None
+        temp=self.head
+        self.head=self.head.next
+        temp.next=None
+ 
+        self.length-=1
+ 
+        if self.length==0:
+            self.tail=None
+        return temp
+--------------------------------------------------------
+1. PREPEND
+tạo node
+rỗng → head = tail = node
+không rỗng → node.next = head → head = node
+length++
+2. APPEND
+tạo node
+rỗng → head = tail = node
+không rỗng → tail.next = node → tail = node
+length++
+3. POP_FIRST
+rỗng → return None
+temp = head
+head = head.next
+temp.next = None
+length--
+nếu rỗng → tail = None
+return temp
+4. POP_LAST
+rỗng → return None
+duyệt tới node cuối + node trước
+pre.next = None
+tail = pre
+length--
+nếu rỗng → head = tail = None
+return node cuối
