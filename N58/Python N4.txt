@@ -1,0 +1,78 @@
+def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
+        
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+    
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1   
+        return True  
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+    def reverse(self):
+        temp=self.head
+        self.head=self.tail
+        self.tail=temp
+        before=None
+        
+        for _ in range(self.length):
+            after=temp.next
+            temp.next=before
+            before=temp
+            temp=after
+
+--------------------------------------------------------
+1. GET (lấy node)
+Kiểm tra index.
+Duyệt đến vị trí cần tìm.
+Trả về node.
+2. SET_VALUE (sửa giá trị)
+Dùng get() lấy node.
+Cập nhật value.
+Trả về True/False.
+3. INSERT (chèn node)
+Tìm node trước vị trí chèn.
+Nối node mới vào danh sách.
+length++.
+4. REMOVE (xóa node)
+Tìm node trước vị trí xóa.
+Bỏ qua node cần xóa.
+length--.
+Trả về node bị xóa.
+5. REVERSE (đảo ngược)
+Đổi head và tail.
+Đảo chiều từng con trỏ next.
+
+
