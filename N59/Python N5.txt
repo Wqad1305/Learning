@@ -1,0 +1,56 @@
+Code:
+def find_middle_node(self):
+    slow = self.head
+    fast = self.head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    return slow
+
+def has_loop(self):
+        fast=self.head
+        slow=self.head
+        
+        while fast and fast.next:
+            slow=fast.next
+            fast=fast.next.next
+            
+            if fast==slow:
+                return True
+            return False 
+def find_kth_from_end(self, k):
+    slow = self.head
+    fast = self.head
+
+    for _ in range(k):
+        if fast is None:
+            return None
+        fast = fast.next
+
+    while fast:
+        slow = slow.next
+        fast = fast.next
+
+    return slow
+def remove_duplicates(self):
+        current=self.head
+        
+        while current:
+            current=runner
+            while runner.next:
+                
+                runner.next.value=current.value
+                runner.next=runner.next.next
+                runner=runner.next
+                
+            current=current.next
+            
+-------------------------------------
+*find_middle_node: đặt 2 nút 1 nhanh 1 chậm nhanh chạy 2 chậm chạy 1 đến khi nút nhanh=None thì chậm nằm ở giữa và trả về chậm
+
+*has_loop như find_middle_node nhưng nếu fast==slow thì có vòng lặp
+* tìm k cuối duyệt xem k=2 thì tăng fast =2 rồi cho fast và slow chạy đều lên đến khi fast=None thì slow là số cần tìm
+*remove_duplicates đặt 2 nút current là nút để xét còn runnner là nút để chạy nếu giá trị trùng thì bỏ qua nó và chạy nút tiêp 
+
