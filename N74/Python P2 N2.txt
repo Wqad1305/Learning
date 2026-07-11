@@ -1,0 +1,102 @@
+print("Hello, World!")
+
+name = "Hoang"
+print("Hello", name)
+------------------------------
+# List
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)
+
+# Tuple
+my_tuple = (1, 2, 3)
+print(my_tuple[0])
+
+# Set
+my_set = {1, 2, 3}
+my_set.add(4)
+print(my_set)
+--------------------------------------------------------
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+print(set1 | set2)   # Union
+print(set1 & set2)   # Intersection
+print(set1 - set2)   # Difference
+print(set1 ^ set2)   # Symmetric Difference
+--------------------------------------------------------
+# List
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)
+
+# Tuple
+my_tuple = (10, 20, 30)
+print(my_tuple[1])
+
+# Set
+my_set = {1, 2, 2, 3}
+print(my_set)
+--------------------------------------------------------
+x = 10
+y = 5
+
+print(x > y)
+print(x == y)
+print(x != y)
+--------------------------------------------------------
+age = 18
+
+if age >= 18:
+    print("Adult")
+elif age >= 13:
+    print("Teenager")
+else:
+    print("Child")
+--------------------------------------------------------
+my_list = [10, 20, 30]
+
+print(20 in my_list)
+print(40 in my_list)
+
+text = "Python"
+print("P" in text)
+--------------------------------------------------------
+fruits = ["apple", "banana", "orange"]
+
+if "banana" in fruits:
+    print("Found banana")
+else:
+    print("Not found")
+========================================================
+10. Writing our first Python app
+
+Viết chương trình đầu tiên: Tạo file Python và viết chương trình đơn giản bằng print(). 2. Chạy chương trình: Thực thi file .py để xem kết quả. 3. Làm quen cú pháp: Hiểu cách Python thực thi từng dòng lệnh.
+
+11. Lists, Tuples, and Sets
+
+List: Lưu nhiều phần tử, có thể thay đổi và cho phép trùng lặp. 2. Tuple: Lưu nhiều phần tử, không thể thay đổi sau khi tạo. 3. Set: Lưu các phần tử không trùng lặp và hỗ trợ tìm kiếm nhanh.
+
+12. Advanced Set Operations
+
+Union: Gộp tất cả phần tử của hai tập hợp. 2. Intersection: Lấy các phần tử xuất hiện ở cả hai tập hợp. 3. Difference/Symmetric Difference: Lấy các phần tử khác nhau hoặc chỉ xuất hiện ở một tập hợp.
+
+13. Solution to Coding Exercise: Lists, Tuples, Sets
+
+List: Thực hành tạo, truy cập, thêm, sửa và xóa phần tử. 2. Tuple: Thực hành tạo và truy cập, hiểu tính không thể thay đổi. 3. Set: Thực hành thêm, xóa phần tử và loại bỏ các giá trị trùng lặp.
+
+14. Booleans in Python
+
+Boolean: Gồm hai giá trị True và False để biểu diễn kết quả điều kiện. 2. Phép so sánh: Dùng ==, !=, >, <, >=, <= để tạo giá trị Boolean. 3. Ứng dụng: Sử dụng Boolean để điều khiển luồng thực thi chương trình.
+
+15. If Statements
+
+if: Kiểm tra điều kiện và thực hiện khối lệnh nếu đúng. 2. elif: Kiểm tra các điều kiện tiếp theo nếu điều kiện trước sai. 3. else: Thực hiện khối lệnh khi tất cả điều kiện đều sai.
+
+16. The in Keyword in Python
+
+in: Kiểm tra phần tử có tồn tại trong String, List, Tuple, Set hoặc Dictionary. 2. Kết quả: Trả về True nếu tồn tại và False nếu không tồn tại. 3. Ứng dụng: Dùng để tìm kiếm và kiểm tra dữ liệu nhanh.
+
+17. If Statements with the in Keyword
+
+Kiểm tra dữ liệu: Dùng if kết hợp in để kiểm tra sự tồn tại của phần tử. 2. Xử lý điều kiện: Thực hiện các khối lệnh theo kết quả kiểm tra. 3. Ứng dụng: Dùng trong tìm kiếm, xác thực và kiểm tra dữ liệu.
