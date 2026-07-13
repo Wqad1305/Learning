@@ -1,0 +1,73 @@
+def hasDuplicate(self, nums: List[int]) -> bool:
+        seen=set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+--------------------------------------------------------
+def isAnagram(self, s: str, t: str) -> bool:
+        count_1={}
+        count_2={}
+        for i in s:
+            if i in count_1:
+                count_1[i]+=1
+            else:
+                count_1[i]=1
+        for j in t :
+            if j in count_2:
+                count_2[j]+=1
+            else:
+                count_2[j]=1
+        if count_1 == count_2:
+            return True
+        else:
+            return False
+--------------------------------------------------------
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen={}
+        need=[]
+        for i,num in enumerate(nums):
+            need=target-num
+            if need in seen:
+                return [seen[need],i]
+            seen[num]=i
+-------------------------------------------------------
+def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        group={}
+        for word in strs:
+            key=''.join(sorted(word))
+            if key not in group:
+                group[key]=[]
+            group[key].append(word)
+        return list(group.values())
+--------------------------------------------------------
+def missing_number(nums):
+    seen = set(nums)
+
+    for num in range(len(nums) + 1):
+        if num not in seen:
+            return num
+--------------------------------------------------------
+def intersection(nums1, nums2):
+    seen = set(nums1)
+    result = set()
+
+    for num in nums2:
+        if num in seen:
+        result.add(num)
+
+    return list(result)
+--------------------------------------------------------
+def majorityElement(nums):
+    count = {}
+
+    for num in nums:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+
+    for num in count:
+        if count[num] > len(nums) / 2:
+            return num
