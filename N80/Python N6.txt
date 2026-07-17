@@ -1,0 +1,73 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        left=0
+        right=len(s)-1
+        while left<right:
+            while left<right and not s[left].isalnum():
+                left+=1
+            while left <right and not s[right].isalnum():
+                right-=1
+            if s[left].lower() !=s[right].lower():
+                return False
+            left+=1
+            right-=1
+        return True
+--------------------------------------------------------
+def validPalindrome(self, s):
+
+        def check(left, right):
+            while left < right:
+                if s[left] != s[right]:
+                    return False
+                left += 1
+                right -= 1
+            return True
+
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+
+            if s[left] != s[right]:
+                return check(left + 1, right) or check(left, right - 1)
+
+            left += 1
+            right -= 1
+
+        return True
+--------------------------------------------------------
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+
+        i = m - 1
+        j = n - 1
+        k = m + n - 1
+
+        while i >= 0 and j >= 0:
+
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i -= 1
+            else:
+                nums1[k] = nums2[j]
+                j -= 1
+
+            k -= 1
+
+        while j >= 0:
+            nums1[k] = nums2[j]
+            j -= 1
+            k -= 1
+--------------------------------------------------------
+class Solution:
+    def removeDuplicates(self, nums):
+
+        left = 0
+
+        for right in range(1, len(nums)):
+
+            if nums[right] != nums[left]:
+                left += 1
+                nums[left] = nums[right]
+
+        return left + 1
