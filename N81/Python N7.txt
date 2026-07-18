@@ -1,0 +1,91 @@
+class Solution(object):
+    def isValid(self, s):
+        stack = []
+
+        pairs = {
+            ')': '(',
+            ']': '[',
+            '}': '{'
+        }
+
+        for ch in s:
+
+            if ch in "([{":
+                stack.append(ch)
+
+            else:
+                if len(stack) == 0:
+                    return False
+
+                top = stack.pop()
+
+                if top != pairs[ch]:
+                    return False
+
+        return len(stack) == 0
+--------------------------------------------------------
+class Solution(object):
+    def removeDuplicates(self, s):
+        stack = []
+
+        for ch in s:
+            if stack and stack[-1] == ch:
+                stack.pop()
+            else:
+                stack.append(ch)
+
+        return "".join(stack)
+--------------------------------------------------------
+class Solution(object):
+    def calPoints(self, operations):
+        stack = []
+
+        for op in operations:
+
+            if op == "+":
+                stack.append(stack[-1] + stack[-2])
+
+            elif op == "D":
+                stack.append(stack[-1] * 2)
+
+            elif op == "C":
+                stack.pop()
+
+            else:
+                stack.append(int(op))
+
+        return sum(stack)
+--------------------------------------------------------
+class Solution(object):
+    def backspaceCompare(self, s, t):
+
+        stack1 = []
+        stack2 = []
+
+        for ch in s:
+            if ch == "#":
+                if stack1:
+                    stack1.pop()
+            else:
+                stack1.append(ch)
+
+        for ch in t:
+            if ch == "#":
+                if stack2:
+                    stack2.pop()
+            else:
+                stack2.append(ch)
+
+        return stack1 == stack2
+---------------------------------------------------------
+class Solution(object):
+    def makeGood(self, s):
+        stack = []
+
+        for ch in s:
+            if stack and abs(ord(stack[-1]) - ord(ch)) == 32:
+                stack.pop()
+            else:
+                stack.append(ch)
+
+        return "".join(stack)
