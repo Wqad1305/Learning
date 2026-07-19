@@ -1,0 +1,94 @@
+1. List Comprehensions
+
+Sử dụng List Comprehensions để tạo danh sách ngắn gọn bằng một dòng lệnh, kết hợp với vòng lặp for và điều kiện if nhằm tối ưu và rút gọn mã nguồn.
+
+2. Dictionaries
+
+Làm việc với Dictionary trong Python, bao gồm tạo, truy cập, thêm, sửa, xóa dữ liệu, duyệt các phần tử và ứng dụng Dictionary để lưu trữ dữ liệu theo cặp key–value cũng như đếm số lần xuất hiện của các phần tử.
+
+3. Destructuring Variables
+
+Sử dụng Destructuring (Unpacking) để gán nhiều giá trị cho nhiều biến cùng lúc, đổi giá trị giữa các biến và sử dụng toán tử * để gom các phần tử còn lại khi giải nén danh sách hoặc tuple.
+
+4. Functions in Python
+
+Xây dựng và sử dụng hàm trong Python bằng từ khóa def, truyền tham số, trả về giá trị bằng return, tái sử dụng mã nguồn và quản lý phạm vi của biến trong chương trình.
+
+5. Function Arguments and Parameters
+
+Truyền dữ liệu vào hàm thông qua arguments và parameters, sử dụng đối số theo vị trí (positional arguments), theo tên (keyword arguments), tham số mặc định (default parameters), cùng với *args và **kwargs để xử lý số lượng đối số linh hoạt.
+--------------------------------------------------------
+# Tạo list bình phương các số từ 1 đến 5
+numbers = [x * x for x in range(1, 6)]
+
+print(numbers)
+--------------------------------------------------------
+student = {
+    "name": "Hoang",
+    "age": 20
+}
+student["major"] = "IT"
+
+for key, value in student.items():
+
+    print(key, value)
+--------------------------------------------------------
+numbers = [10, 20, 30]
+
+a, b, c = numbers
+
+print(a)
+print(b)
+print(c)
+--------------------------------------------------------
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+
+print(result)
+--------------------------------------------------------
+def introduce(name, age=20):
+    print("Tên:", name)
+    print("Tuổi:", age)
+
+introduce("Hoang")
+introduce("An", 18)
+========================================================
+Code leetcode:
+def reverse_string(s):
+    stack = []
+
+    for ch in s:
+        stack.append(ch)
+
+    result = ""
+
+    while len(stack) > 0:
+        result += stack.pop()
+
+    return result
+
+
+print(reverse_string("hello"))
+print(reverse_string("Python"))
+--------------------------------------------------------
+def remove_duplicates(s):
+    stack = []
+
+    for ch in s:
+        if len(stack) > 0 and stack[-1] == ch:
+            stack.pop()
+        else:
+            stack.append(ch)
+
+    result = ""
+
+    for ch in stack:
+        result += ch
+
+    return result
+
+
+print(remove_duplicates("abbaca"))
+print(remove_duplicates("azxxzy"))
