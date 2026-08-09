@@ -1,0 +1,78 @@
+1. Maximum Depth of Binary Tree
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution(object):
+    def maxDepth(self, root):
+        if root is None:
+            return 0
+
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return 1 + max(left, right)
+--------------------------------------------------------
+
+Node hiện tại
+→ tính độ sâu cây trái
+→ tính độ sâu cây phải
+→ lấy lớn hơn + 1
+--------------------------------------------------------
+2. Invert Binary Tree
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution(object):
+    def invertTree(self, root):
+        if root is None:
+            return None
+
+        root.left, root.right = root.right, root.left
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
+--------------------------------------------------------
+Node hiện tại
+→ đổi left ↔ right
+→ xử lý cây trái
+→ xử lý cây phải
+--------------------------------------------------------
+3. Same Tree
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution(object):
+    def isSameTree(self, p, q):
+        if p is None and q is None:
+            return True
+
+        if p is None or q is None:
+            return False
+
+        if p.val != q.val:
+            return False
+
+        return (self.isSameTree(p.left, q.left) and
+                self.isSameTree(p.right, q.right))
+--------------------------------------------------------
+Cả hai None → True
+Một cái None → False
+Giá trị khác nhau → False
+Sau đó so sánh left và right
