@@ -1,0 +1,73 @@
+Bài 1 — Kth Largest Element
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        heap = []
+
+
+        for num in nums:
+            heapq.heappush(heap, num)
+
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+
+        return heap[0]
+-----------------------------------------------------------
+Dùng Min Heap giữ k phần tử lớn nhất → vượt k thì pop() phần tử nhỏ nhất → heap[0] là đáp án.
+-----------------------------------------------------------
+Bài 2 — Last Stone Weight
+
+class Solution:
+    def lastStoneWeight(self, stones):
+        heap = [-stone for stone in stones]
+        heapq.heapify(heap)
+
+
+        while len(heap) > 1:
+            first = -heapq.heappop(heap)
+            second = -heapq.heappop(heap)
+
+
+            if first != second:
+                heapq.heappush(heap, -(first - second))
+
+
+        if heap:
+            return -heap[0]
+
+
+        return 0
+-----------------------------------------------------------
+Dùng Max Heap để luôn lấy 2 viên nặng nhất → tính hiệu → nếu còn viên đá thì đưa lại vào heap → lặp lại.
+-----------------------------------------------------------
+Bài 3 — K Closest Points to Origin
+
+class Solution:
+    def kClosest(self, points, k):
+        heap = []
+
+
+        for x, y in points:
+            distance = x * x + y * y
+
+
+            heapq.heappush(heap, (-distance, x, y))
+
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+
+        result = []
+
+
+        for _, x, y in heap:
+            result.append([x, y])
+
+
+        return result
+-----------------------------------------------------------
+Tính x² + y² → dùng Max Heap giữ k điểm gần nhất → nếu vượt k thì loại điểm xa nhất → trả về k điểm còn lại.
+-----------------------------------------------------------
