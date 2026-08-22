@@ -1,0 +1,59 @@
+Bài 1 — Kth Largest Element in a Stream
+import heapq
+
+class KthLargest:
+
+    def __init__(self, k, nums):
+        self.k = k
+        self.heap = nums
+
+        heapq.heapify(self.heap)
+
+        while len(self.heap) > k:
+            heapq.heappop(self.heap)
+
+    def add(self, val):
+        heapq.heappush(self.heap, val)
+
+        if len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+
+        return self.heap[0]
+--------------------------------------------------------
+Min Heap → giữ k phần tử lớn nhất → phần tử nhỏ nhất trong k phần tử đó chính là Kth Largest.
+--------------------------------------------------------
+Bài 2 — Last Stone Weight
+import heapq
+
+class Solution:
+    def lastStoneWeight(self, stones):
+        heap = [-x for x in stones]
+        heapq.heapify(heap)
+
+        while len(heap) > 1:
+            a = -heapq.heappop(heap)
+            b = -heapq.heappop(heap)
+
+            if a != b:
+                heapq.heappush(heap, -(a - b))
+
+        return -heap[0] if heap else 0
+--------------------------------------------------------
+Max Heap → luôn lấy 2 viên lớn nhất → đập nhau → đưa phần chênh lệch trở lại heap.
+--------------------------------------------------------
+Bài 3 — Kth Largest Element in an Array
+import heapq
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        heap = []
+
+        for num in nums:
+            heapq.heappush(heap, num)
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+        return heap[0]
+--------------------------------------------------------
+Duyệt từng số → giữ lại k số lớn nhất → heap[0] là số nhỏ nhất trong k số đó → chính là Kth Largest.
