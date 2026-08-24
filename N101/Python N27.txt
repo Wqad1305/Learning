@@ -1,0 +1,149 @@
+Bài 1 — Find if Path Exists in Graph
+class Solution:
+    def validPath(self, n, edges, source, destination):
+
+        graph = {i: [] for i in range(n)}
+
+        for a, b in edges:
+            graph[a].append(b)
+            graph[b].append(a)
+
+        visited = set()
+
+        def dfs(node):
+            if node == destination:
+                return True
+
+            visited.add(node)
+
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    if dfs(neighbor):
+                        return True
+
+            return False
+
+        return dfs(source)
+--------------------------------------------------------
+Tạo adjacency list → DFS từ source → nếu gặp destination thì True → duyệt hết mà không gặp thì False.
+--------------------------------------------------------
+Bài 2 — Number of Provinces
+class Solution:
+    def findCircleNum(self, isConnected):
+
+        n = len(isConnected)
+        visited = set()
+        provinces = 0
+
+        def dfs(city):
+            visited.add(city)
+
+            for neighbor in range(n):
+                if isConnected[city][neighbor] == 1:
+                    if neighbor not in visited:
+                        dfs(neighbor)
+
+        for city in range(n):
+            if city not in visited:
+                provinces += 1
+                dfs(city)
+
+        return provinces
+--------------------------------------------------------
+Duyệt từng thành phố → nếu chưa visited thì tăng provinces → DFS để đánh dấu toàn bộ thành phố trong cùng nhóm.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
