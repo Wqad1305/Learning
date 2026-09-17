@@ -1,0 +1,72 @@
+Bài 1 — LeetCode 39: Combination Sum
+
+class Solution:
+    def combinationSum(self, candidates, target):
+        result = []
+        current = []
+
+        def backtrack(start, target):
+            if target == 0:
+                result.append(current.copy())
+                return
+
+            if target < 0:
+                return
+
+            for i in range(start, len(candidates)):
+                current.append(candidates[i])
+
+                backtrack(i, target - candidates[i])
+
+                current.pop()
+
+        backtrack(0, target)
+        return result
+--------------------------------------------------------
+Chọn 1 chữ của số hiện tại
+- đi sang số tiếp theo
+- đủ độ dài thì lưu kết quả
+- quay lại (pop)
+--------------------------------------------------------
+Bài 2 — LeetCode 40: Combination Sum II
+
+class Solution:
+    def combinationSum2(self, candidates, target):
+        candidates.sort()
+
+        result = []
+        current = []
+
+        def backtrack(start, target):
+            if target == 0:
+                result.append(current.copy())
+                return
+
+            if target < 0:
+                return
+
+            for i in range(start, len(candidates)):
+
+                # Bỏ phần tử trùng ở cùng một level
+                if i > start and candidates[i] == candidates[i - 1]:
+                    continue
+
+                # Vì đã sort nên có thể dừng sớm
+                if candidates[i] > target:
+                    break
+
+                current.append(candidates[i])
+
+                backtrack(i + 1, target - candidates[i])
+
+                current.pop()
+
+        backtrack(0, target)
+        return result
+--------------------------------------------------------
+Chọn 1 số hiện tại
+-Đi sang phần tử tiếp theo
+-Nếu tổng bằng target thì lưu kết quả
+-Nếu vượt target thì dừng
+-Gặp số trùng ở cùng một tầng thì bỏ qua
+Quay lại
