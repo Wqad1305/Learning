@@ -1,0 +1,62 @@
+1. LeetCode 347 — Top K Frequent Elements
+
+import heapq
+
+class Solution:
+    def topKFrequent(self, nums, k):
+        count = {}
+
+        for num in nums:
+            if num not in count:
+                count[num] = 1
+            else:
+                count[num] += 1
+
+        heap = []
+
+        for num in count:
+            frequency = count[num]
+
+            heapq.heappush(heap, (frequency, num))
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+        result = []
+
+        while len(heap) > 0:
+            frequency, num = heapq.heappop(heap)
+            result.append(num)
+
+        return result
+--------------------------------------------------------
+đếm → push (tần suất, số) → quá k thì pop
+--------------------------------------------------------
+LeetCode 973 — K Closest Points to Origin
+import heapq
+
+class Solution:
+    def kClosest(self, points, k):
+        heap = []
+
+        for x, y in points:
+            distance = x * x + y * y
+
+            heapq.heappush(heap, (-distance, x, y))
+
+            if len(heap) > k:
+                heapq.heappop(heap)
+
+        result = []
+
+        while heap:
+            distance, x, y = heapq.heappop(heap)
+            result.append([x, y])
+
+        return result
+-------------------------------------------------------
+Tính khoảng cách từng điểm
+→ đưa vào Heap
+→ chỉ giữ k điểm
+→ điểm xa nhất bị loại
+→ lấy k điểm còn lại
