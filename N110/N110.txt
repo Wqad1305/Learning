@@ -1,0 +1,61 @@
+1. LeetCode 703 — Kth Largest Element in a Stream
+import heapq
+
+class KthLargest:
+
+    def __init__(self, k, nums):
+        self.k = k
+        self.heap = []
+
+        for num in nums:
+            heapq.heappush(self.heap, num)
+
+            if len(self.heap) > self.k:
+                heapq.heappop(self.heap)
+
+    def add(self, val):
+        heapq.heappush(self.heap, val)
+
+        if len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+
+        return self.heap[0]
+----------------------------------------------------
+Tạo Min Heap
+→ thêm phần tử
+→ nếu Heap > k thì pop
+→ phần tử đầu Heap là phần tử lớn thứ k
+--------------------------------------------------
+
+2. LeetCode 1046 — Last Stone Weight
+
+import heapq
+
+class Solution:
+    def lastStoneWeight(self, stones):
+
+        heap = []
+
+        for stone in stones:
+            heapq.heappush(heap, -stone)
+
+        while len(heap) > 1:
+
+            first = -heapq.heappop(heap)
+            second = -heapq.heappop(heap)
+
+            if first != second:
+                remaining = first - second
+                heapq.heappush(heap, -remaining)
+
+        if len(heap) == 0:
+            return 0
+
+        return -heap[0]
+---------------------------------------------------
+
+Đưa tất cả viên đá vào Max Heap
+→ lấy 2 viên lớn nhất
+→ đập 2 viên
+→ nếu còn dư thì đưa lại vào Heap
+→ lặp lại đến khi còn tối đa 1 viên
