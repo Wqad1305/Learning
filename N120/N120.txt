@@ -1,0 +1,150 @@
+1.create
+
+@model shopweb3.Models.Category
+
+@{
+    ViewData["Title"] = "Thêm Danh mục";
+}
+
+<h2>Thêm mới Danh mục</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="CatName" class="form-label">Tên danh mục</label>
+                <input asp-for="CatName" class="form-control" />
+                <span asp-validation-for="CatName" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Lưu lại</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>
+------------------------------------------------------------------------
+2. delete
+
+@model shopweb3.Models.Category
+
+@{
+    ViewData["Title"] = "Xóa Danh mục";
+}
+
+<h3 class="text-danger">Bạn có chắc chắn muốn xóa danh mục này?</h3>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Mã danh mục:</dt>
+        <dd class="col-sm-10">@Model.CatId</dd>
+
+        <dt class="col-sm-2">Tên danh mục:</dt>
+        <dd class="col-sm-10">@Model.CatName</dd>
+    </dl>
+    
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CatId" />
+        <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+------------------------------------------------------------------------
+3. Edit
+
+
+@model shopweb3.Models.Category
+
+@{
+    ViewData["Title"] = "Sửa Danh mục";
+}
+
+<h2>Chỉnh sửa Danh mục</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CatId" />
+
+            <div class="mb-3">
+                <label asp-for="CatName" class="form-label">Tên danh mục</label>
+                <input asp-for="CatName" class="form-control" />
+                <span asp-validation-for="CatName" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Cập nhật</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>
+------------------------------------------------------------------------
+4.Index
+
+@model IEnumerable<shopweb3.Models.Category>
+
+@{
+    ViewData["Title"] = "Quản lý Danh mục";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Danh sách Danh mục</h2>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Thêm mới</a>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th style="width: 10%;">ID</th>
+            <th>Tên danh mục</th>
+            <th style="width: 20%;" class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CatId</td>
+                <td>@item.CatName</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.CatId" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.CatId" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+------------------------------------------------------------------------
+Làm thêm xóa sửa index trong Lập trình web
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
